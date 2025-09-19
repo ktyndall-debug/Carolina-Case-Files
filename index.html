@@ -252,46 +252,413 @@
             letter-spacing: 2px;
         }
 
-        /* About Section */
-        .about {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 60px;
-            margin: 40px 0;
-            border: 1px solid #333;
-        }
-
-        .about-content {
+        /* Enhanced About Section */
+        .about-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 400px 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
+            min-height: 600px;
         }
 
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        /* Investigator Profile */
+        .investigator-profile {
+            position: sticky;
+            top: 2rem;
         }
 
-        .about-image {
-            background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=center');
-            background-size: cover;
-            background-position: center;
-            height: 300px;
-            border-radius: 10px;
-            border: 2px solid #666;
+        .profile-card {
+            background: 
+                linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%),
+                radial-gradient(ellipse at top, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            border: 2px solid #333;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 3px rgba(255, 255, 255, 0.1);
             position: relative;
+            overflow: hidden;
         }
 
-        .about-image::after {
+        .profile-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 107, 107, 0.02) 20px,
+                    rgba(255, 107, 107, 0.02) 22px
+                );
+            animation: scanLines 10s linear infinite;
+        }
+
+        @keyframes scanLines {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem auto;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: url('./rusty.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #ff6b6b;
+            box-shadow: 
+                0 10px 25px rgba(255, 107, 107, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 50%);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            font-family: 'Special Elite', monospace;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.4);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .evidence-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: markerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes markerPulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+            }
+            50% { 
+                box-shadow: 0 0 0 8px rgba(255, 107, 107, 0);
+            }
+        }
+
+        .marker-1 { top: 20%; right: 20%; animation-delay: 0s; }
+        .marker-2 { bottom: 30%; left: 15%; animation-delay: 0.7s; }
+        .marker-3 { top: 60%; right: 10%; animation-delay: 1.4s; }
+
+        .marker:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+        .marker::after {
+            content: attr(data-info);
+            position: absolute;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-family: 'Special Elite', monospace;
+        }
+
+        .marker:hover::after {
+            opacity: 1;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .investigator-name {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.1));
+            border: 2px solid rgba(255, 107, 107, 0.4);
+            border-radius: 15px;
+            margin-bottom: 0.5rem;
+        }
+
+        .investigator-name h3 {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.4rem;
+            color: #ff6b6b;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .investigator-name p {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            color: #ccc;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 107, 107, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            font-family: 'Special Elite', monospace;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ccc;
+            font-family: 'Special Elite', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Case Files Content */
+        .case-files-content {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-files-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255, 107, 107, 0.05) 0%, transparent 50%);
+            animation: backgroundShift 15s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .case-file-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #666;
+            position: relative;
+            z-index: 2;
+        }
+
+        .file-status {
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            animation: statusBlink 2s ease-in-out infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.7; }
+        }
+
+        .timestamp {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            color: #999;
+            letter-spacing: 0.5px;
+        }
+
+        .mission-statement {
+            position: relative;
+            z-index: 2;
+        }
+
+        .typewriter-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            border-right: 2px solid #ff6b6b;
+            overflow: hidden;
+            animation: typewriter 4s steps(40) 1s forwards, blink 1s infinite;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .evidence-trail {
+            margin-top: 2rem;
+        }
+
+        .evidence-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid transparent;
             border-radius: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInSlide 0.8s ease forwards;
+        }
+
+        .evidence-item:nth-child(1) { animation-delay: 1s; }
+        .evidence-item:nth-child(2) { animation-delay: 1.5s; }
+        .evidence-item:nth-child(3) { animation-delay: 2s; }
+        .evidence-item:nth-child(4) { animation-delay: 2.5s; }
+
+        @keyframes fadeInSlide {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                border-left-color: #ff6b6b;
+            }
+        }
+
+        .evidence-item:hover {
+            background: rgba(255, 107, 107, 0.1);
+            transform: translateX(5px);
+        }
+
+        .evidence-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            filter: sepia(1) hue-rotate(320deg) saturate(2);
+        }
+
+        .evidence-text {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Investigation Tools */
+        .investigation-tools {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+
+        .tool:hover,
+        .tool.active {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .tool-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            filter: grayscale(1);
+            transition: filter 0.3s ease;
+        }
+
+        .tool:hover .tool-icon,
+        .tool.active .tool-icon {
+            filter: grayscale(0);
+        }
+
+        .tool span {
+            font-size: 0.8rem;
+            font-family: 'Special Elite', monospace;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .tool:hover span,
+        .tool.active span {
+            color: #ff6b6b;
         }
 
         /* Episodes Section */
@@ -894,6 +1261,63 @@
             .video-container iframe {
                 height: 250px;
             }
+
+            /* Enhanced About Section Mobile */
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .investigator-profile {
+                position: static;
+            }
+
+            .profile-card {
+                padding: 1.5rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .stat-item {
+                padding: 0.75rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .case-files-content {
+                padding: 1.5rem;
+            }
+
+            .case-file-header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .investigation-tools {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .tool {
+                min-width: auto;
+                padding: 0.75rem;
+            }
+
+            .evidence-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -933,6 +1357,24 @@
 
             .video-info p {
                 font-size: 0.8rem;
+            }
+
+            /* Enhanced About Section Small Mobile */
+            .profile-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .investigation-tools {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .typewriter-text {
+                font-size: 1rem;
             }
         }
         @media (max-width: 768px) {
@@ -1118,15 +1560,95 @@
     <section id="about" class="section">
         <div class="about reveal">
             <h2 class="section-title">The Investigation Begins</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Welcome to Carolina Case Files, where the shadows of the past refuse to stay buried. We delve deep into the most perplexing cold cases and cryptic mysteries that have haunted the Carolinas for decades.</p>
-                    
-                    <p>Each episode takes you on a journey through forgotten evidence, overlooked clues, and testimonies that time tried to silence. From unexplained disappearances in the Blue Ridge Mountains to mysterious deaths along the Carolina coast, we explore cases that challenge conventional explanations.</p>
-                    
-                    <p>Join us as we piece together fragments of truth, interview those who remember, and shine new light on cases that authorities couldn't solve. Some mysteries have answers waiting to be discovered. Others may forever remain in the shadows.</p>
+            <div class="about-container">
+                <div class="investigator-profile">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <div class="image-overlay">
+                                <div class="badge">LEAD INVESTIGATOR</div>
+                                <div class="evidence-markers">
+                                    <div class="marker marker-1" data-info="15 Years Experience"></div>
+                                    <div class="marker marker-2" data-info="200+ Cases Solved"></div>
+                                    <div class="marker marker-3" data-info="Cold Case Specialist"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="investigator-name">
+                                <h3>Rusty Martin Sr.</h3>
+                                <p>Lead Investigator</p>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="127">0</span>
+                                <span class="stat-label">Cases Investigated</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="89">0</span>
+                                <span class="stat-label">Mysteries Solved</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="15">0</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-image"></div>
+                
+                <div class="case-files-content">
+                    <div class="typewriter-container">
+                        <div class="case-file-header">
+                            <span class="file-status">ACTIVE INVESTIGATION</span>
+                            <span class="timestamp">LAST UPDATED: <span id="current-time"></span></span>
+                        </div>
+                        
+                        <div class="mission-statement">
+                            <p class="typewriter-text">
+                                Welcome to Carolina Case Files, where the shadows of the past refuse to stay buried. We delve deep into the most perplexing cold cases and cryptic mysteries that have haunted the Carolinas for decades.
+                            </p>
+                            
+                            <div class="evidence-trail">
+                                <div class="evidence-item" data-delay="0">
+                                    <div class="evidence-icon">📁</div>
+                                    <div class="evidence-text">Each episode takes you on a journey through forgotten evidence, overlooked clues, and testimonies that time tried to silence.</div>
+                                </div>
+                                
+                                <div class="evidence-item" data-delay="1">
+                                    <div class="evidence-icon">🔍</div>
+                                    <div class="evidence-text">From unexplained disappearances in the Blue Ridge Mountains to mysterious deaths along the Carolina coast, we explore cases that challenge conventional explanations.</div>
+                                </div>
+                                
+                                <div class="evidence-item" data-delay="2">
+                                    <div class="evidence-icon">💡</div>
+                                    <div class="evidence-text">Join us as we piece together fragments of truth, interview those who remember, and shine new light on cases that authorities couldn't solve.</div>
+                                </div>
+                                
+                                <div class="evidence-item" data-delay="3">
+                                    <div class="evidence-icon">🌙</div>
+                                    <div class="evidence-text">Some mysteries have answers waiting to be discovered. Others may forever remain in the shadows.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="investigation-tools">
+                        <div class="tool active" data-tool="magnifier">
+                            <div class="tool-icon">🔍</div>
+                            <span>Investigate</span>
+                        </div>
+                        <div class="tool" data-tool="evidence">
+                            <div class="tool-icon">📋</div>
+                            <span>Evidence</span>
+                        </div>
+                        <div class="tool" data-tool="timeline">
+                            <div class="tool-icon">⏰</div>
+                            <span>Timeline</span>
+                        </div>
+                        <div class="tool" data-tool="contacts">
+                            <div class="tool-icon">📞</div>
+                            <span>Contacts</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1272,6 +1794,116 @@
             alert('Thank you for your message! We will review your submission and get back to you soon.');
         });
 
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = timeString.toUpperCase();
+            }
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+
+        // Animated counter for stats
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Intersection Observer for stats animation
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-target'));
+                        animateCounter(stat, target);
+                    });
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const profileCard = document.querySelector('.profile-card');
+        if (profileCard) {
+            statObserver.observe(profileCard);
+        }
+
+        // Investigation tools interaction
+        const tools = document.querySelectorAll('.tool');
+        tools.forEach(tool => {
+            tool.addEventListener('click', function() {
+                // Remove active class from all tools
+                tools.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tool
+                this.classList.add('active');
+                
+                // Add some interaction feedback
+                this.style.transform = 'translateY(-3px) scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-3px)';
+                }, 150);
+            });
+        });
+
+        // Evidence markers interaction
+        const markers = document.querySelectorAll('.marker');
+        markers.forEach(marker => {
+            marker.addEventListener('click', function() {
+                // Add a ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'rgba(255, 107, 107, 0.6)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.top = '50%';
+                ripple.style.left = '50%';
+                ripple.style.marginTop = '-10px';
+                ripple.style.marginLeft = '-10px';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
         // Video Folder Modal Functionality
         const videoFolder = document.getElementById('videoFolder');
         const videoModal = document.getElementById('videoModal');
@@ -1283,31 +1915,37 @@
         const embedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`;
 
         // Open folder and play video
-        videoFolder.addEventListener('click', function() {
-            videoModal.style.display = 'block';
-            videoFrame.src = embedUrl;
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
+        if (videoFolder) {
+            videoFolder.addEventListener('click', function() {
+                videoModal.style.display = 'block';
+                videoFrame.src = embedUrl;
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+        }
 
         // Close folder
-        closeModal.addEventListener('click', function() {
-            videoModal.style.display = 'none';
-            videoFrame.src = ''; // Stop the video
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        });
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                videoModal.style.display = 'none';
+                videoFrame.src = ''; // Stop the video
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            });
+        }
 
         // Close modal when clicking outside
-        videoModal.addEventListener('click', function(e) {
-            if (e.target === videoModal) {
-                videoModal.style.display = 'none';
-                videoFrame.src = '';
-                document.body.style.overflow = 'auto';
-            }
-        });
+        if (videoModal) {
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === videoModal) {
+                    videoModal.style.display = 'none';
+                    videoFrame.src = '';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
 
         // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && videoModal.style.display === 'block') {
+            if (e.key === 'Escape' && videoModal && videoModal.style.display === 'block') {
                 videoModal.style.display = 'none';
                 videoFrame.src = '';
                 document.body.style.overflow = 'auto';
