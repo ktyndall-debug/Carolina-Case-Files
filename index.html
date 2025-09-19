@@ -299,6 +299,46 @@
             animation: scanLines 10s linear infinite;
         }
 
+        /* Caution Tape Banner over entire card */
+        .profile-card::after {
+            content: 'LEAD INVESTIGATOR';
+            position: absolute;
+            top: 20px;
+            left: -50px;
+            right: -50px;
+            background: 
+                repeating-linear-gradient(
+                    -45deg,
+                    #FFD700 0px,
+                    #FFD700 15px,
+                    #000000 15px,
+                    #000000 18px,
+                    #FFD700 18px,
+                    #FFD700 33px,
+                    #000000 33px,
+                    #000000 36px
+                );
+            color: #000;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            font-family: 'Arial Black', sans-serif;
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transform: rotate(-12deg);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.6),
+                inset 0 1px 3px rgba(255, 255, 255, 0.3),
+                inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            z-index: 10;
+            text-shadow: 
+                1px 1px 0px rgba(255, 255, 255, 0.5),
+                -1px -1px 0px rgba(0, 0, 0, 0.3);
+        }
+
         @keyframes scanLines {
             0% { transform: translateY(-100%); }
             100% { transform: translateY(100%); }
@@ -327,86 +367,6 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 50%);
-        }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: linear-gradient(45deg, #ff6b6b, #ff4757);
-            color: white;
-            padding: 4px 8px;
-            font-size: 0.7rem;
-            font-family: 'Special Elite', monospace;
-            border-radius: 12px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.4);
-            animation: badgePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes badgePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .evidence-markers {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        .marker {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            border: 2px solid white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: markerPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes markerPulse {
-            0%, 100% { 
-                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-            }
-            50% { 
-                box-shadow: 0 0 0 8px rgba(255, 107, 107, 0);
-            }
-        }
-
-        .marker-1 { top: 20%; right: 20%; animation-delay: 0s; }
-        .marker-2 { bottom: 30%; left: 15%; animation-delay: 0.7s; }
-        .marker-3 { top: 60%; right: 10%; animation-delay: 1.4s; }
-
-        .marker:hover {
-            transform: scale(1.5);
-            z-index: 10;
-        }
-
-        .marker::after {
-            content: attr(data-info);
-            position: absolute;
-            bottom: 150%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            font-family: 'Special Elite', monospace;
-        }
-
-        .marker:hover::after {
-            opacity: 1;
         }
 
         .profile-stats {
@@ -1751,12 +1711,6 @@
                     <div class="profile-card">
                         <div class="profile-image">
                             <div class="image-overlay">
-                                <div class="badge">LEAD INVESTIGATOR</div>
-                                <div class="evidence-markers">
-                                    <div class="marker marker-1" data-info="15 Years Experience"></div>
-                                    <div class="marker marker-2" data-info="200+ Cases Solved"></div>
-                                    <div class="marker marker-3" data-info="Cold Case Specialist"></div>
-                                </div>
                             </div>
                         </div>
                         <div class="profile-stats">
@@ -2081,32 +2035,7 @@
 
         // Investigation tools interaction - REMOVED
 
-        // Evidence markers interaction
-        const markers = document.querySelectorAll('.marker');
-        markers.forEach(marker => {
-            marker.addEventListener('click', function() {
-                // Add a ripple effect
-                const ripple = document.createElement('div');
-                ripple.style.position = 'absolute';
-                ripple.style.width = '20px';
-                ripple.style.height = '20px';
-                ripple.style.background = 'rgba(255, 107, 107, 0.6)';
-                ripple.style.borderRadius = '50%';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.top = '50%';
-                ripple.style.left = '50%';
-                ripple.style.marginTop = '-10px';
-                ripple.style.marginLeft = '-10px';
-                ripple.style.pointerEvents = 'none';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
+        // Evidence markers interaction - REMOVED (no longer needed)
 
         // Add ripple animation CSS
         const rippleStyle = document.createElement('style');
