@@ -606,61 +606,6 @@
             line-height: 1.6;
         }
 
-        /* Investigation Tools */
-        .investigation-tools {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tool {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #444;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 80px;
-        }
-
-        .tool:hover,
-        .tool.active {
-            background: rgba(255, 107, 107, 0.2);
-            border-color: #ff6b6b;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
-        }
-
-        .tool-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            filter: grayscale(1);
-            transition: filter 0.3s ease;
-        }
-
-        .tool:hover .tool-icon,
-        .tool.active .tool-icon {
-            filter: grayscale(0);
-        }
-
-        .tool span {
-            font-size: 0.8rem;
-            font-family: 'Special Elite', monospace;
-            color: #ccc;
-            transition: color 0.3s ease;
-        }
-
-        .tool:hover span,
-        .tool.active span {
-            color: #ff6b6b;
-        }
-
         /* Episodes Section */
         .episodes-grid {
             display: grid;
@@ -749,7 +694,7 @@
         }
 
         .merch-notebook {
-            background-image: url('https://images.unsplash.com/photo-1517971129774-59906f8e10ad?w=250&h=200&fit=crop&crop=center');
+            background-image: url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=250&h=200&fit=crop&crop=center');
         }
 
         .merch-stickers {
@@ -1303,16 +1248,6 @@
                 text-align: center;
             }
 
-            .investigation-tools {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-            }
-
-            .tool {
-                min-width: auto;
-                padding: 0.75rem;
-            }
-
             .evidence-item {
                 flex-direction: column;
                 text-align: center;
@@ -1367,10 +1302,6 @@
 
             .stat-number {
                 font-size: 1.5rem;
-            }
-
-            .investigation-tools {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .typewriter-text {
@@ -1629,25 +1560,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="investigation-tools">
-                        <div class="tool active" data-tool="magnifier">
-                            <div class="tool-icon">🔍</div>
-                            <span>Investigate</span>
-                        </div>
-                        <div class="tool" data-tool="evidence">
-                            <div class="tool-icon">📋</div>
-                            <span>Evidence</span>
-                        </div>
-                        <div class="tool" data-tool="timeline">
-                            <div class="tool-icon">⏰</div>
-                            <span>Timeline</span>
-                        </div>
-                        <div class="tool" data-tool="contacts">
-                            <div class="tool-icon">📞</div>
-                            <span>Contacts</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1848,22 +1760,7 @@
             statObserver.observe(profileCard);
         }
 
-        // Investigation tools interaction
-        const tools = document.querySelectorAll('.tool');
-        tools.forEach(tool => {
-            tool.addEventListener('click', function() {
-                // Remove active class from all tools
-                tools.forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tool
-                this.classList.add('active');
-                
-                // Add some interaction feedback
-                this.style.transform = 'translateY(-3px) scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-3px)';
-                }, 150);
-            });
-        });
+        // Investigation tools interaction - REMOVED
 
         // Evidence markers interaction
         const markers = document.querySelectorAll('.marker');
