@@ -609,6 +609,165 @@
         /* Episodes Section */
         .episodes-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .episode-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b6b;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .episode-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .episode-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .episode-card:hover .episode-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .episode-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-button-small {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 107, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .episode-card:hover .play-button-small {
+            transform: scale(1);
+        }
+
+        .episode-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-family: 'Special Elite', monospace;
+        }
+
+        .episode-info {
+            padding: 1.5rem;
+        }
+
+        .episode-title {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.2rem;
+            color: #ff6b6b;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+        }
+
+        .episode-description {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .episode-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #999;
+            font-family: 'Special Elite', monospace;
+        }
+
+        .episode-date,
+        .episode-views {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 3px 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+
+        /* Responsive Design for Episodes */
+        @media (max-width: 768px) {
+            .episodes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .episode-card {
+                margin: 0 1rem;
+            }
+
+            .episode-thumbnail {
+                height: 180px;
+            }
+
+            .episode-info {
+                padding: 1rem;
+            }
+
+            .episode-title {
+                font-size: 1.1rem;
+            }
+
+            .episode-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+        }
+        .episodes-grid {
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
@@ -1654,6 +1813,70 @@
                                     <div class="evidence-text">Some mysteries have answers waiting to be discovered. Others may forever remain in the shadows.</div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="episodes" class="section">
+        <div class="reveal">
+            <h2 class="section-title">Latest Episodes</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #ccc;">
+                Catch up on our most recent investigations into Carolina's unsolved mysteries
+            </p>
+            <div class="episodes-grid">
+                <div class="episode-card">
+                    <div class="episode-thumbnail">
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_1/maxresdefault.jpg" alt="Episode Thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button-small">▶</div>
+                        </div>
+                        <div class="episode-duration">15:42</div>
+                    </div>
+                    <div class="episode-info">
+                        <h3 class="episode-title">The Vanishing at Devils Tramping Ground</h3>
+                        <p class="episode-description">Deep in the heart of Chatham County lies a mysterious circle where nothing grows and strange occurrences have been reported for centuries...</p>
+                        <div class="episode-meta">
+                            <span class="episode-date">2 days ago</span>
+                            <span class="episode-views">12.5K views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card">
+                    <div class="episode-thumbnail">
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg" alt="Episode Thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button-small">▶</div>
+                        </div>
+                        <div class="episode-duration">22:18</div>
+                    </div>
+                    <div class="episode-info">
+                        <h3 class="episode-title">The Lost Colony: What Really Happened?</h3>
+                        <p class="episode-description">New evidence emerges about the disappearance of the Roanoke Colony, challenging everything we thought we knew about this 400-year-old mystery...</p>
+                        <div class="episode-meta">
+                            <span class="episode-date">1 week ago</span>
+                            <span class="episode-views">28.3K views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card">
+                    <div class="episode-thumbnail">
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg" alt="Episode Thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button-small">▶</div>
+                        </div>
+                        <div class="episode-duration">18:54</div>
+                    </div>
+                    <div class="episode-info">
+                        <h3 class="episode-title">The Beast of Bladenboro</h3>
+                        <p class="episode-description">In 1954, a mysterious creature terrorized the small town of Bladenboro, leaving behind a trail of drained livestock and terrified residents...</p>
+                        <div class="episode-meta">
+                            <span class="episode-date">2 weeks ago</span>
+                            <span class="episode-views">35.7K views</span>
                         </div>
                     </div>
                 </div>
