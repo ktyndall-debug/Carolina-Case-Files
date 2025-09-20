@@ -302,43 +302,44 @@
         }
 
         /* Caution Tape Banner over entire card */
+        /* Simple Red Glowing Text */
         .profile-card::after {
-            content: 'LEAD INVESTIGATOR';
+            content: 'Lead Investigator';
             position: absolute;
-            top: 20px;
-            left: -50px;
-            right: -50px;
-            background: 
-                repeating-linear-gradient(
-                    -45deg,
-                    #FFD700 0px,
-                    #FFD700 15px,
-                    #000000 15px,
-                    #000000 18px,
-                    #FFD700 18px,
-                    #FFD700 33px,
-                    #000000 33px,
-                    #000000 36px
-                );
-            color: #000;
-            padding: 10px 0;
-            font-size: 0.9rem;
-            font-family: 'Arial Black', sans-serif;
-            font-weight: 900;
+            top: 15px;
+            left: 0;
+            right: 0;
+            color: #ff6b6b;
+            font-size: 1rem;
+            font-family: 'Special Elite', monospace;
+            font-weight: bold;
             text-align: center;
             letter-spacing: 1px;
             text-transform: uppercase;
-            transform: rotate(-12deg);
-            box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.6),
-                inset 0 1px 3px rgba(255, 255, 255, 0.3),
-                inset 0 -1px 3px rgba(0, 0, 0, 0.3);
-            border-top: 1px solid #000;
-            border-bottom: 1px solid #000;
             z-index: 10;
             text-shadow: 
-                1px 1px 0px rgba(255, 255, 255, 0.5),
-                -1px -1px 0px rgba(0, 0, 0, 0.3);
+                0 0 5px #ff6b6b,
+                0 0 10px #ff6b6b,
+                0 0 15px #ff6b6b,
+                0 0 20px #ff6b6b;
+        }
+
+        /* Add aged spots and wear marks */
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 22px;
+            left: -45px;
+            right: -45px;
+            height: 36px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 105, 20, 0.4) 2px, transparent 3px),
+                radial-gradient(circle at 60% 70%, rgba(101, 67, 33, 0.3) 1.5px, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(139, 105, 20, 0.3) 1px, transparent 2px),
+                radial-gradient(circle at 15% 80%, rgba(101, 67, 33, 0.2) 1px, transparent 2px);
+            transform: rotate(-12deg);
+            z-index: 11;
+            pointer-events: none;
         }
 
         @keyframes scanLines {
