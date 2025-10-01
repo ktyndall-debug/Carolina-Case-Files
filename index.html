@@ -931,6 +931,141 @@
             box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
         }
 
+        /* Viral YouTube Section */
+        .viral-section {
+            position: relative;
+            padding: 8rem 2rem;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            overflow: hidden;
+        }
+
+        .viral-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(255, 107, 107, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 85% 75%, rgba(255, 107, 107, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 45% 60%, rgba(255, 107, 107, 0.02) 2px, transparent 2px);
+            background-size: 100px 100px, 150px 150px, 200px 200px;
+            animation: cryptidFloat 20s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes cryptidFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(10px, -10px) scale(1.05); }
+            50% { transform: translate(-10px, 10px) scale(0.95); }
+            75% { transform: translate(5px, -5px) scale(1.02); }
+        }
+
+        .viral-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .viral-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            box-shadow: 
+                0 0 20px rgba(255, 107, 107, 0.4),
+                inset 0 1px 3px rgba(255, 255, 255, 0.3);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.6); }
+        }
+
+        .viral-title {
+            font-family: 'Special Elite', monospace;
+            font-size: 3rem;
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 
+                0 0 10px rgba(255, 107, 107, 0.5),
+                0 0 20px rgba(255, 107, 107, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.2;
+        }
+
+        .viral-text {
+            font-size: 1.2rem;
+            color: #ccc;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .viral-highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+        }
+
+        .cryptid-shadows {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            filter: blur(30px);
+            animation: shadowDrift 15s ease-in-out infinite;
+        }
+
+        .cryptid-shadows:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .cryptid-shadows:nth-child(2) {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .cryptid-shadows:nth-child(3) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes shadowDrift {
+            0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+            25% { transform: translate(30px, -30px); opacity: 0.5; }
+            50% { transform: translate(-20px, 20px); opacity: 0.2; }
+            75% { transform: translate(20px, -10px); opacity: 0.4; }
+        }
+
+        @media (max-width: 768px) {
+            .viral-title {
+                font-size: 2rem;
+            }
+            .viral-text {
+                font-size: 1rem;
+            }
+        }
+
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.8);
@@ -1839,6 +1974,35 @@
         </div>
     </section>
 
+    <!-- Viral YouTube Section -->
+    <section class="viral-section">
+        <div class="cryptid-shadows"></div>
+        <div class="cryptid-shadows"></div>
+        <div class="cryptid-shadows"></div>
+        
+        <div class="viral-content-wrapper">
+            <div class="reveal">
+                <div style="text-align: center;">
+                    <span class="viral-badge">🔥 Viral Overnight</span>
+                </div>
+                
+                <h2 class="viral-title">The Story That Started It All</h2>
+                
+                <p class="viral-text">
+                    What began as a single investigation into <span class="viral-highlight">The Pender County Rake</span> exploded across the internet overnight. Our YouTube channel went from zero to thousands of subscribers as the chilling footage and eyewitness accounts captivated viewers hungry for the truth.
+                </p>
+                
+                <p class="viral-text">
+                    Now, we're working tirelessly to bring you more unsolved mysteries from across the Carolinas. Each episode requires extensive research, careful filming in remote locations, and meticulous editing to preserve the integrity of these cases.
+                </p>
+                
+                <p class="viral-text">
+                    <span class="viral-highlight">New episodes are coming soon.</span> Quality investigations take time, but we promise each story will be worth the wait. Subscribe to our channel and turn on notifications so you don't miss when we uncover the next mystery lurking in the shadows of the Carolinas.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section id="merch" class="section">
         <div class="reveal">
             <h2 class="section-title">Evidence Locker</h2>
@@ -1914,9 +2078,6 @@
             <p>Seeking truth in the shadows of the Carolinas</p>
             <div class="social-links">
                 <a href="https://youtube.com/@carolinacrimefiles?si=2OhBWju_DRFjZp_z" target="_blank">YouTube</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">Facebook</a>
             </div>
             <p>&copy; 2025 Carolina Case Files. All rights reserved.</p>
         </div>
