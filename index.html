@@ -502,22 +502,24 @@
         }
 
         .typewriter-text {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             margin-bottom: 2rem;
             color: #e0e0e0;
-            border-right: 2px solid #ff6b6b;
-            overflow: hidden;
-            animation: typewriter 4s steps(40) 1s forwards, blink 1s infinite;
+            opacity: 0;
+            animation: fadeInText 1.5s ease forwards;
+            text-align: left;
         }
 
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
+        @keyframes fadeInText {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .evidence-trail {
@@ -527,39 +529,52 @@
         .evidence-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid transparent;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: 
+                linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+            border-left: 4px solid #ff6b6b;
             border-radius: 8px;
             opacity: 0;
-            transform: translateX(-20px);
-            animation: fadeInSlide 0.8s ease forwards;
+            transform: translateY(30px);
+            animation: evidenceFadeIn 1s ease forwards;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .evidence-item:nth-child(1) { animation-delay: 1s; }
-        .evidence-item:nth-child(2) { animation-delay: 1.5s; }
-        .evidence-item:nth-child(3) { animation-delay: 2s; }
-        .evidence-item:nth-child(4) { animation-delay: 2.5s; }
+        .evidence-item:nth-child(1) { animation-delay: 0.5s; }
+        .evidence-item:nth-child(2) { animation-delay: 1s; }
+        .evidence-item:nth-child(3) { animation-delay: 1.5s; }
+        .evidence-item:nth-child(4) { animation-delay: 2s; }
 
-        @keyframes fadeInSlide {
+        @keyframes evidenceFadeIn {
             to {
                 opacity: 1;
-                transform: translateX(0);
-                border-left-color: #ff6b6b;
+                transform: translateY(0);
             }
         }
 
         .evidence-item:hover {
-            background: rgba(255, 107, 107, 0.1);
-            transform: translateX(5px);
+            background: 
+                linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 25px rgba(255, 107, 107, 0.2),
+                0 0 20px rgba(255, 107, 107, 0.1);
+            border-left-color: #ff4757;
         }
 
         .evidence-icon {
-            font-size: 1.5rem;
+            font-size: 2rem;
             flex-shrink: 0;
             filter: sepia(1) hue-rotate(320deg) saturate(2);
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .evidence-text {
