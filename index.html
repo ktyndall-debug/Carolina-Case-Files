@@ -931,7 +931,11 @@
         #contact {
             position: relative;
             padding: 6rem 2rem;
-            background: transparent;
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(139, 0, 0, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #050505 0%, #0f0f1a 30%, #1a1a2e 50%, #0f0f1a 70%, #050505 100%);
+            overflow: hidden;
         }
 
         #contact::before {
@@ -942,9 +946,21 @@
             right: 0;
             bottom: 0;
             background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 107, 107, 0.03) 2px, rgba(255, 107, 107, 0.03) 4px);
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 107, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255, 107, 107, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.03) 2px, transparent 2px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 107, 107, 0.02) 2px, rgba(255, 107, 107, 0.02) 4px);
+            background-size: 150px 150px, 200px 200px, 100px 100px, 100% 100%;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.4;
+            animation: contactFloat 25s ease-in-out infinite;
+        }
+
+        @keyframes contactFloat {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(15px, -15px); }
+            50% { transform: translate(-15px, 15px); }
+            75% { transform: translate(10px, -10px); }
         }
 
         .contact-form {
