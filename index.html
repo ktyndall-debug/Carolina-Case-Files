@@ -2333,14 +2333,19 @@
         if (form) {
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 
                 // Disable submit button and show loading state
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
                 formResult.style.display = 'none';
                 
-                // Get form data
+                // Get form data and remove redirect field
                 const formData = new FormData(form);
+                const formObject = Object.fromEntries(formData);
+                
+                // Explicitly set redirect to false to prevent Web3Forms alert
+                formObject.redirect = 'false';
                 
                 try {
                     // Submit to Web3Forms
@@ -2350,7 +2355,7 @@
                             'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         },
-                        body: JSON.stringify(Object.fromEntries(formData))
+                        body: JSON.stringify(formObject)
                     });
                     
                     const data = await response.json();
@@ -2382,6 +2387,8 @@
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Message';
                 }
+                
+                return false;
             });
         }
 
