@@ -927,39 +927,109 @@
         }
 
         /* Contact Form */
+        /* Contact Section */
+        #contact {
+            position: relative;
+            padding: 6rem 2rem;
+            background: 
+                linear-gradient(135deg, #0a0a0a 0%, #16213e 50%, #0a0a0a 100%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 107, 107, 0.03) 2px, rgba(255, 107, 107, 0.03) 4px);
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
         .contact-form {
-            background: rgba(0, 0, 0, 0.4);
+            background: 
+                linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(20, 20, 30, 0.98) 100%);
             padding: 3rem;
             border-radius: 15px;
-            border: 1px solid #444;
-            max-width: 600px;
+            border: 2px solid #ff6b6b;
+            max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(255, 107, 107, 0.2),
+                inset 0 1px 3px rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-form::before {
+            content: 'CONFIDENTIAL TIP LINE';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .contact-form::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757, #ff6b6b);
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            position: relative;
         }
 
         .form-group label {
             font-family: 'Special Elite', monospace;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
             color: #ff6b6b;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #555;
-            border-radius: 5px;
+            padding: 14px 16px;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(20, 20, 30, 0.6) 100%);
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            border-radius: 8px;
             color: #fff;
             font-size: 1rem;
             font-family: 'Special Elite', monospace;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .form-group input:focus,
@@ -967,7 +1037,46 @@
         .form-group select:focus {
             outline: none;
             border-color: #ff6b6b;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(20, 20, 30, 0.7) 100%);
+            box-shadow: 
+                0 0 20px rgba(255, 107, 107, 0.4),
+                inset 0 2px 5px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6b6b' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        #formResult {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Special Elite', monospace;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Viral YouTube Section */
