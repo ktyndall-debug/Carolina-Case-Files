@@ -2335,6 +2335,10 @@
                 e.preventDefault();
                 e.stopPropagation();
                 
+                // Temporarily disable alert function to block Web3Forms alert
+                const originalAlert = window.alert;
+                window.alert = function() {};
+                
                 // Disable submit button and show loading state
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
@@ -2386,6 +2390,11 @@
                     // Re-enable submit button
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Message';
+                    
+                    // Restore original alert function after a delay
+                    setTimeout(function() {
+                        window.alert = originalAlert;
+                    }, 1000);
                 }
                 
                 return false;
