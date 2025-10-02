@@ -934,6 +934,16 @@
             background: 
                 linear-gradient(135deg, #0a0a0a 0%, #16213e 50%, #0a0a0a 100%),
                 radial-gradient(ellipse at 50% 50%, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
+            mask-image: linear-gradient(to bottom, 
+                transparent 0%, 
+                black 10%, 
+                black 90%, 
+                transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, 
+                transparent 0%, 
+                black 10%, 
+                black 90%, 
+                transparent 100%);
         }
 
         #contact::before {
@@ -961,14 +971,6 @@
             box-shadow: 
                 0 20px 60px rgba(0, 0, 0, 0.6),
                 inset 0 1px 3px rgba(255, 255, 255, 0.05);
-            mask-image: 
-                linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
-                linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
-            mask-composite: intersect;
-            -webkit-mask-image: 
-                linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
-                linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
-            -webkit-mask-composite: source-in;
         }
 
         .contact-form::before {
