@@ -58,7 +58,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 1);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -133,6 +133,7 @@
             transition: opacity 0.3s ease;
             overflow: hidden;
             margin-bottom: 0;
+            padding-top: 80px;
         }
 
         /* Dramatic Light Reveal Effect - Starts Dark, Flickers On */
@@ -608,16 +609,18 @@
             align-items: flex-start;
             gap: 1.5rem;
             margin-bottom: 2rem;
-            padding: 1.5rem;
+            padding: 2rem;
             background: 
-                linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
-            border-left: 4px solid #ff6b6b;
-            border-radius: 8px;
+                linear-gradient(135deg, rgba(20, 20, 30, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%);
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            border-radius: 12px;
             opacity: 0;
             transform: translateY(30px);
             animation: evidenceFadeIn 1s ease forwards;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 107, 107, 0.1);
         }
 
         .evidence-item:nth-child(1) { animation-delay: 0.5s; }
@@ -634,12 +637,12 @@
 
         .evidence-item:hover {
             background: 
-                linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+                linear-gradient(135deg, rgba(25, 25, 35, 0.9) 0%, rgba(15, 15, 20, 1) 100%);
             transform: translateY(-5px);
+            border-color: rgba(255, 107, 107, 0.5);
             box-shadow: 
-                0 8px 25px rgba(255, 107, 107, 0.2),
-                0 0 20px rgba(255, 107, 107, 0.1);
-            border-left-color: #ff4757;
+                0 12px 30px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 107, 107, 0.3);
         }
 
         .evidence-icon {
@@ -2071,8 +2074,23 @@
             }
 
             .contact-form {
-                padding: 1.5rem;
+                padding: 2.5rem 1.5rem 1.5rem 1.5rem;
                 margin: 0 0.5rem;
+            }
+            
+            .contact-form::before {
+                top: -12px;
+                font-size: 0.65rem;
+                padding: 4px 15px;
+                letter-spacing: 1.5px;
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-group:first-of-type {
+                margin-top: 1rem;
             }
         }
     </style>
@@ -2249,10 +2267,10 @@
         <div class="reveal">
             <h2 class="section-title">Evidence Locker</h2>
             <p style="text-align: center; margin-bottom: 1rem; font-size: 1.3rem; color: #ff6b6b; font-family: 'Special Elite', monospace; text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);">
-                Merchandise Coming Soon
+                Official Merchandise Now Available
             </p>
             <p style="text-align: center; font-size: 1rem; color: #ccc; max-width: 700px; margin: 0 auto 4rem auto;">
-                Official Carolina Case Files merchandise will be available soon. Stay tuned for exclusive items to support the investigation.
+                Support the investigation by getting exclusive Carolina Case Files merchandise. Every purchase helps us continue producing high-quality episodes. We're currently filming and producing the show entirely on our own funds, and your support makes it possible to bring you more compelling true crime stories from the Carolinas.
             </p>
             
             <!-- Merchandise Preview -->
@@ -2266,9 +2284,12 @@
                         <p style="font-size: 1rem; color: #ccc; line-height: 1.6; margin-bottom: 1.5rem;">
                             Represent the investigation with our signature Carolina Case Files logo. Featuring the iconic North Carolina silhouette with fingerprint detail in bold red on premium black fabric.
                         </p>
-                        <div style="display: inline-block; padding: 10px 25px; background: rgba(255, 107, 107, 0.1); border: 2px solid #ff6b6b; border-radius: 8px; font-family: 'Special Elite', monospace; color: #ff6b6b; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">
-                            Available Soon
-                        </div>
+                        <a href="https://carolina-case-files.myspreadshop.com/" target="_blank" rel="noopener noreferrer" class="cta-button" style="text-decoration: none; display: inline-block;">
+                            Shop Now
+                        </a>
+                        <p style="font-size: 0.9rem; color: #999; margin-top: 1.5rem; font-style: italic;">
+                            Thank you for supporting independent true crime content
+                        </p>
                     </div>
                 </div>
             </div>
